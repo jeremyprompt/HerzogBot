@@ -7,6 +7,7 @@ export default function Home() {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showChat, setShowChat] = useState(false);
+  const [lens, setLens] = useState('jungle');
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -32,7 +33,10 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: userMessage }),
+        body: JSON.stringify({ 
+          message: userMessage,
+          lens: lens 
+        }),
       });
 
       if (!response.ok) {
@@ -57,7 +61,7 @@ export default function Home() {
       <div className="landing">
         <h1>Welcome to the Abyss</h1>
         <button className="start-btn" onClick={() => setShowChat(true)}>
-          Begin Your Journey
+          Speak to HerzBot
         </button>
       </div>
     );
@@ -65,6 +69,16 @@ export default function Home() {
 
   return (
     <div className="chat-container">
+      <select 
+        className="lens-toggle"
+        value={lens}
+        onChange={(e) => setLens(e.target.value)}
+      >
+        <option value="jungle">Jungle (Chaos, Survival)</option>
+        <option value="ice">Ice (Isolation, Cold Reason)</option>
+        <option value="urban">Urban Decay (Human Folly)</option>
+      </select>
+
       <div className="messages">
         {messages.length === 0 ? (
           <div className="message">
@@ -72,7 +86,10 @@ export default function Home() {
           </div>
         ) : (
           messages.map((message, index) => (
-            <div key={index} className="message">
+            <div 
+              key={index} 
+              className={`message ${message.role === 'assistant' ? 'assistant-message' : ''}`}
+            >
               {message.content}
             </div>
           ))
@@ -89,11 +106,11 @@ export default function Home() {
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Share your thoughts..."
+          placeholder="Confess your thoughts..."
           className="user-input"
         />
         <button type="submit" className="submit-btn">
-          Send
+          Submit to the void
         </button>
       </form>
     </div>
