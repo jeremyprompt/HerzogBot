@@ -20,6 +20,10 @@ export default function Home() {
     {
       src: 'https://upload.wikimedia.org/wikipedia/commons/3/30/Werner_herzog_portrait.jpg',
       alt: 'Werner Herzog2'
+    },
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Werner_Herzog_Berlin_2015.jpg/250px-Werner_Herzog_Berlin_2015.jpg',
+      alt: 'Werner Herzog3'
     }
   ];
 
