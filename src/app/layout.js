@@ -1,16 +1,20 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Werner Herzog Chatbot",
-  description: "Chat with an AI version of Werner Herzog",
+  title: "HerzBot - Welcome to the Abyss",
+  description: "Experience the profound musings of Werner Herzog",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        {children}
-      </body>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Special+Elite&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
