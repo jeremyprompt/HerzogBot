@@ -21,6 +21,12 @@ export async function POST(req) {
   try {
     const { messages } = await req.json();
 
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error('OPENAI_API_KEY is not set in environment variables');
+    }
+
+    console.log('Making OpenAI API request with messages:', messages);
+
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
@@ -35,9 +41,20 @@ export async function POST(req) {
       message: completion.choices[0].message.content 
     });
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Detailed error:', {
+      message: error.message,
+      status: error.status,
+      code: error.code,
+      type: error.type,
+      stack: error.stack
+    });
+
     return NextResponse.json(
-      { error: 'Error processing your request' },
+      { 
+        error: 'Error processing your request',
+        details: error.message,
+        code: error.code || 'unknown_error'
+      },
       { status: 500 }
     );
   }

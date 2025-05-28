@@ -42,11 +42,6 @@ export default function Home() {
     }
   };
 
-  const handleInputChange = (e) => {
-    console.log('Input changed:', e.target.value); // Debug log
-    setInput(e.target.value);
-  };
-
   return (
     <main className="min-h-screen bg-gray-100 p-4">
       <div className="max-w-4xl mx-auto">
@@ -84,7 +79,7 @@ export default function Home() {
           <input
             type="text"
             value={input}
-            onChange={handleInputChange}
+            onChange={(e) => setInput(e.target.value)}
             placeholder="Ask Werner something..."
             className="flex-1 p-2 border border-gray-300 rounded-lg"
             style={{ backgroundColor: 'white' }}
