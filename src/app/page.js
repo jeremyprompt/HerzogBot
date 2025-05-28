@@ -1,19 +1,11 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const inputRef = useRef(null);
-
-  useEffect(() => {
-    // Focus the input field when the component mounts
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,11 +39,12 @@ export default function Home() {
       setMessages(prev => [...prev, { role: 'assistant', content: 'I apologize, but I seem to have encountered an existential crisis. Please try again.' }]);
     } finally {
       setIsLoading(false);
-      // Focus the input field after the response
-      if (inputRef.current) {
-        inputRef.current.focus();
-      }
     }
+  };
+
+  const handleInputChange = (e) => {
+    console.log('Input changed:', e.target.value); // Debug log
+    setInput(e.target.value);
   };
 
   return (
@@ -89,15 +82,12 @@ export default function Home() {
 
         <form onSubmit={handleSubmit} className="flex gap-2">
           <input
-            ref={inputRef}
             type="text"
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={handleInputChange}
             placeholder="Ask Werner something..."
-            className="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            autoComplete="off"
-            autoFocus
-            aria-label="Chat input"
+            className="flex-1 p-2 border border-gray-300 rounded-lg"
+            style={{ backgroundColor: 'white' }}
           />
           <button
             type="submit"
