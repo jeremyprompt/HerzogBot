@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 export default function Home() {
   const [input, setInput] = useState('');
@@ -12,9 +13,18 @@ export default function Home() {
   const messagesEndRef = useRef(null);
 
   const images = [
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Werner_Herzog_Cannes_2010.jpg/440px-Werner_Herzog_Cannes_2010.jpg',
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Werner_Herzog_2015.jpg/440px-Werner_Herzog_2015.jpg',
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Werner_Herzog_Vienna_2009.jpg/440px-Werner_Herzog_Vienna_2009.jpg'
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Werner_Herzog_Cannes_2010.jpg/440px-Werner_Herzog_Cannes_2010.jpg',
+      alt: 'Werner Herzog at Cannes 2010'
+    },
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Werner_Herzog_2015.jpg/440px-Werner_Herzog_2015.jpg',
+      alt: 'Werner Herzog 2015'
+    },
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Werner_Herzog_Vienna_2009.jpg/440px-Werner_Herzog_Vienna_2009.jpg',
+      alt: 'Werner Herzog in Vienna 2009'
+    }
   ];
 
   useEffect(() => {
@@ -131,13 +141,19 @@ export default function Home() {
         </form>
       </div>
       <div className="chat-right">
-        {images.map((src, index) => (
-          <img
-            key={src}
-            src={src}
-            alt="Werner Herzog"
-            className={`herz-img ${index === currentImage ? 'active' : ''}`}
-          />
+        {images.map((image, index) => (
+          <div
+            key={image.src}
+            className={`herz-img-container ${index === currentImage ? 'active' : ''}`}
+          >
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              style={{ objectFit: 'cover' }}
+              priority={index === 0}
+            />
+          </div>
         ))}
       </div>
     </div>
