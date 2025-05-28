@@ -14,12 +14,12 @@ export default function Home() {
 
   const images = [
     {
-      src: 'https://st.depositphotos.com/1814084/1506/i/450/depositphotos_15064419-stock-photo-werner-herzog.jpg',
-      alt: 'Werner Herzog'
+      src: 'https://upload.wikimedia.org/wikipedia/commons/0/06/Werner_Herzog_Bruxelles_02_cropped.jpg',
+      alt: 'Werner Herzog1'
     },
     {
       src: 'https://upload.wikimedia.org/wikipedia/commons/3/30/Werner_herzog_portrait.jpg',
-      alt: 'Werner Herzog'
+      alt: 'Werner Herzog2'
     }
   ];
 
