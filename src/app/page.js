@@ -14,16 +14,12 @@ export default function Home() {
 
   const images = [
     {
-      src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Werner_Herzog_Cannes_2010.jpg/440px-Werner_Herzog_Cannes_2010.jpg',
-      alt: 'Werner Herzog at Cannes 2010'
+      src: 'https://st.depositphotos.com/1814084/1506/i/450/depositphotos_15064419-stock-photo-werner-herzog.jpg',
+      alt: 'Werner Herzog'
     },
     {
-      src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Werner_Herzog_2015.jpg/440px-Werner_Herzog_2015.jpg',
-      alt: 'Werner Herzog 2015'
-    },
-    {
-      src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Werner_Herzog_Vienna_2009.jpg/440px-Werner_Herzog_Vienna_2009.jpg',
-      alt: 'Werner Herzog in Vienna 2009'
+      src: 'https://upload.wikimedia.org/wikipedia/commons/3/30/Werner_herzog_portrait.jpg',
+      alt: 'Werner Herzog'
     }
   ];
 
