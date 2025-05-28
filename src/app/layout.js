@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "HerzBot - Welcome to the Abyss",
+  title: "HerzogBot - Welcome to the Abyss",
   description: "Experience the profound musings of Werner Herzog",
 };
 

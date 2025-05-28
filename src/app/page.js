@@ -8,7 +8,22 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [lens, setLens] = useState('jungle');
+  const [currentImage, setCurrentImage] = useState(0);
   const messagesEndRef = useRef(null);
+
+  const images = [
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Werner_Herzog_Cannes_2010.jpg/440px-Werner_Herzog_Cannes_2010.jpg',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Werner_Herzog_2015.jpg/440px-Werner_Herzog_2015.jpg',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Werner_Herzog_Vienna_2009.jpg/440px-Werner_Herzog_Vienna_2009.jpg'
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -61,7 +76,7 @@ export default function Home() {
       <div className="landing">
         <h1>Welcome to the Abyss</h1>
         <button className="start-btn" onClick={() => setShowChat(true)}>
-          Speak to HerzBot
+          Speak to HerzogBot
         </button>
       </div>
     );
@@ -69,50 +84,62 @@ export default function Home() {
 
   return (
     <div className="chat-container">
-      <select 
-        className="lens-toggle"
-        value={lens}
-        onChange={(e) => setLens(e.target.value)}
-      >
-        <option value="jungle">Jungle (Chaos, Survival)</option>
-        <option value="ice">Ice (Isolation, Cold Reason)</option>
-        <option value="urban">Urban Decay (Human Folly)</option>
-      </select>
+      <div className="chat-left">
+        <select 
+          className="lens-toggle"
+          value={lens}
+          onChange={(e) => setLens(e.target.value)}
+        >
+          <option value="jungle">Jungle (Chaos, Survival)</option>
+          <option value="ice">Ice (Isolation, Cold Reason)</option>
+          <option value="urban">Urban Decay (Human Folly)</option>
+        </select>
 
-      <div className="messages">
-        {messages.length === 0 ? (
-          <div className="message">
-            Welcome to the abyss of conversation. What profound thoughts shall we explore today?
-          </div>
-        ) : (
-          messages.map((message, index) => (
-            <div 
-              key={index} 
-              className={`message ${message.role === 'assistant' ? 'assistant-message' : ''}`}
-            >
-              {message.content}
+        <div className="messages">
+          {messages.length === 0 ? (
+            <div className="message">
+              Welcome to the abyss of conversation. What profound thoughts shall we explore today?
             </div>
-          ))
-        )}
-        {isLoading && (
-          <div className="message">
-            Contemplating the depths of your inquiry...
-          </div>
-        )}
-        <div ref={messagesEndRef} />
+          ) : (
+            messages.map((message, index) => (
+              <div 
+                key={index} 
+                className={`message ${message.role === 'assistant' ? 'assistant-message' : ''}`}
+              >
+                {message.content}
+              </div>
+            ))
+          )}
+          {isLoading && (
+            <div className="message">
+              Contemplating the depths of your inquiry...
+            </div>
+          )}
+          <div ref={messagesEndRef} />
+        </div>
+        <form onSubmit={handleSubmit} className="input-container">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Confess your thoughts..."
+            className="user-input"
+          />
+          <button type="submit" className="submit-btn">
+            Submit to the void
+          </button>
+        </form>
       </div>
-      <form onSubmit={handleSubmit} className="input-container">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Confess your thoughts..."
-          className="user-input"
-        />
-        <button type="submit" className="submit-btn">
-          Submit to the void
-        </button>
-      </form>
+      <div className="chat-right">
+        {images.map((src, index) => (
+          <img
+            key={src}
+            src={src}
+            alt="Werner Herzog"
+            className={`herz-img ${index === currentImage ? 'active' : ''}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }

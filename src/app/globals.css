@@ -58,11 +58,25 @@ body {
 
 .chat-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 100vh;
+}
+
+.chat-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
   background: var(--bg-color);
   padding: 2em;
   box-sizing: border-box;
+}
+
+.chat-right {
+  flex: 1;
+  background: #111;
+  border-left: 1px solid #333;
+  overflow: hidden;
+  position: relative;
 }
 
 .lens-toggle {
@@ -139,4 +153,17 @@ body {
 
 .submit-btn:hover {
   background-color: #9B3E3E;
+}
+
+.herz-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+.herz-img.active {
+  opacity: 1;
 }
