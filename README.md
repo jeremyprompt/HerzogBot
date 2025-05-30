@@ -4,39 +4,24 @@ In the vast, unrelenting landscape of artificial intelligence, where most chatbo
 
 ## The Abyss Gazes Back
 
-This is not merely a chatbot. It is a portal into the existential void, a digital echo of the profound observations that have haunted human consciousness for millennia. Through the lens of Werner Herzog's distinctive perspective, we explore the depths of human existence, one conversation at a time.
+This is not merely a chatbot. It is a portal into the existential void, a digital echo of the profound observations that have haunted human consciousness for millennia. Through the distinctive voice of Werner Herzog, we explore the depths of human existence, one conversation at a time.
 
-## The Existential Lenses
+## The Digital Philosopher
 
-Like the shifting landscapes of our consciousness, HerzogBot offers three distinct perspectives through which to view the world:
-
-### The Jungle Lens
-*"In the heart of the Amazon, where reason rots as fast as flesh..."*
-- A raw, unfiltered perspective
-- Chaos and survival as fundamental truths
-- Nature's indifference to human constructs
-- The primal essence of existence
-
-### The Ice Lens
-*"In the frozen wastelands, where thoughts crystallize like frost..."*
-- Cold, calculated philosophical musings
-- Isolation as a path to clarity
-- The void of human solitude
-- The crystalline purity of truth
-
-### The Urban Decay Lens
-*"In the concrete jungle, where dreams crumble like ancient ruins..."*
-- Cynical yet profound observations
-- The folly of human ambition
-- Civilization's illusions laid bare
-- The poetry of decay
+HerzogBot channels the essence of Werner Herzog's unique perspective:
+- Deeply philosophical insights
+- Darkly humorous observations
+- Profound reflections on human nature
+- Unmistakable voice and intensity
+- Unfiltered wisdom from a life of exploration
 
 ## Technical Manifestation
 
 This digital entity is constructed using:
-- Next.js - A framework as modern as the questions it poses
-- OpenAI's GPT-3.5 - The digital mind that speaks with Herzog's voice
+- Next.js 15.3.2 - A framework as modern as the questions it poses
+- OpenAI's GPT-4 - The advanced digital mind that speaks with Herzog's authentic voice
 - Tailwind CSS - The aesthetic framework that mirrors the stark beauty of Herzog's vision
+- React 19 - The foundation of our digital exploration
 
 ## Installation
 
