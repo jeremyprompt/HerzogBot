@@ -23,7 +23,7 @@ export async function POST(req) {
       messages: [
         {
           role: "system",
-          content: lensPrompts[lens] || lensPrompts.jungle
+          content: `${lensPrompts[lens] || lensPrompts.jungle} Keep your responses brief and concise, under 2-3 sentences.`
         },
         {
           role: "user",
@@ -31,7 +31,8 @@ export async function POST(req) {
         }
       ],
       temperature: 0.7,
-      max_tokens: 150
+      max_tokens: 100,
+      presence_penalty: 0.6
     });
 
     return new Response(JSON.stringify({
