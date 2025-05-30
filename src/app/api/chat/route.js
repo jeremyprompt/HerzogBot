@@ -19,20 +19,21 @@ export async function POST(req) {
     const { message, lens = 'jungle' } = await req.json();
     
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4",
       messages: [
         {
           role: "system",
-          content: `${lensPrompts[lens] || lensPrompts.jungle} Keep your responses brief and concise, under 2-3 sentences.`
+          content: `${lensPrompts[lens] || lensPrompts.jungle} Keep your responses concise but allow for deeper philosophical insights. Channel Werner Herzog's distinctive voice and philosophical depth.`
         },
         {
           role: "user",
           content: message
         }
       ],
-      temperature: 0.7,
-      max_tokens: 100,
-      presence_penalty: 0.6
+      temperature: 0.8,
+      max_tokens: 300,
+      presence_penalty: 0.6,
+      frequency_penalty: 0.3
     });
 
     return new Response(JSON.stringify({
