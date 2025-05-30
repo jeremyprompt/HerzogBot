@@ -8,7 +8,6 @@ export default function Home() {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showChat, setShowChat] = useState(false);
-  const [lens, setLens] = useState('jungle');
   const [currentImage, setCurrentImage] = useState(0);
   const messagesEndRef = useRef(null);
 
@@ -59,8 +58,7 @@ export default function Home() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
-          message: userMessage,
-          lens: lens 
+          message: userMessage
         }),
       });
 
@@ -95,16 +93,6 @@ export default function Home() {
   return (
     <div className="chat-container">
       <div className="chat-left">
-        <select 
-          className="lens-toggle"
-          value={lens}
-          onChange={(e) => setLens(e.target.value)}
-        >
-          <option value="jungle">Jungle (Chaos, Survival)</option>
-          <option value="ice">Ice (Isolation, Cold Reason)</option>
-          <option value="urban">Urban Decay (Human Folly)</option>
-        </select>
-
         <div className="messages">
           {messages.length === 0 ? (
             <div className="message">
