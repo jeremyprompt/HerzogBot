@@ -101,6 +101,7 @@ body {
   overflow-y: auto;
   padding-right: 1em;
   border-bottom: 1px solid #444;
+  max-height: calc(100vh - 200px);
 }
 
 .message {
@@ -112,6 +113,9 @@ body {
   font-family: 'Special Elite', monospace;
   color: var(--text-color);
   box-shadow: 0 0 10px rgba(255,255,255,0.02);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-width: 100%;
 }
 
 .assistant-message {
