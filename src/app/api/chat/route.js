@@ -27,7 +27,7 @@ export async function POST(req) {
         }
       ],
       temperature: 0.8,
-      max_tokens: 300,
+      max_tokens: 150,
       presence_penalty: 0.6,
       frequency_penalty: 0.3
     });
